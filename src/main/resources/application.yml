@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: customers
+  profiles:
+    active: production
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# ACTUATOR INFO
+info:
+  app:
+    name: "Customers"
+    version: "0.0.1"
+    profile: ${spring.profiles.active}
+  serverInfo:
+    port: ${server.port}
+
+application:
+  datasource:
+    url: ${customers.datasource.url}
+    username: ${customers.datasource.username}
+    password: ${customers.datasource.password}
+    driver-class-name: ${customers.datasource.driver-class-name}

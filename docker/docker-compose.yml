@@ -1,0 +1,21 @@
+version: '3'
+services:
+  dbpostgresql_customers:
+    container_name: "customers_db"
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: customersDb
+
+  dbpostgresql_customers_test:
+    container_name: "customers_db_test"
+    image: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: customersDbTest
