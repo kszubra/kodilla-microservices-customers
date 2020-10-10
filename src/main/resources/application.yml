@@ -25,3 +25,6 @@ application:
     username: ${customers.datasource.username}
     password: ${customers.datasource.password}
     driver-class-name: ${customers.datasource.driver-class-name}
+
+eureka:
+  client: ${eureka-client}
