@@ -1,4 +1,4 @@
-package com.kodilla.microservices.customers.service.interfaces;
+package com.kodilla.microservices.customers.service.interfaces.providers;
 
 import com.kodilla.microservices.customers.api.snapshot.AccountSnapshot;
 
