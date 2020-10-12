@@ -4,9 +4,10 @@ import com.kodilla.microservices.customers.api.request.CustomerCreateRequest;
 import com.kodilla.microservices.customers.api.response.CustomerProductsResponse;
 import com.kodilla.microservices.customers.api.response.CustomerResponse;
 import com.kodilla.microservices.customers.api.snapshot.CustomerSnapshot;
+import com.kodilla.microservices.customers.service.interfaces.providers.CustomerAccountsProvider;
 import com.kodilla.microservices.customers.service.interfaces.CustomerApiService;
 import com.kodilla.microservices.customers.service.interfaces.CustomerService;
-import com.kodilla.microservices.customers.service.interfaces.ProductService;
+import com.kodilla.microservices.customers.service.interfaces.providers.CustomerCardsProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class DefaultCustomerApiService implements CustomerApiService {
 
-    private final ProductService productService;
+    private final CustomerAccountsProvider accountsProvider;
     private final CustomerService customerService;
+    private final CustomerCardsProvider cardsProvider;
 
     @Override
     @Transactional
@@ -40,7 +42,8 @@ public class DefaultCustomerApiService implements CustomerApiService {
         return CustomerProductsResponse.builder()
                 .customerId(customer.getId())
                 .fullName(String.format("%s %s", customer.getFirstName(), customer.getLastName()))
-                .accounts(productService.findCustomerProducts(customer.getId()))
+                .accounts(accountsProvider.getCustomerAccounts(customer.getId()))
+                .cards(cardsProvider.getCustomerCards(customer.getId()))
                 .build();
     }
 }
