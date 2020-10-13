@@ -36,6 +36,9 @@ class AccountsProviderTest {
 
         //Then
         assertEquals(1, accounts.size());
+        assertEquals(95213, accounts.get(0).getId());
+        assertEquals("08897810189710581776778244", accounts.get(0).getNrb());
+        assertEquals("PLN", accounts.get(0).getCurrency());
     }
 
 }
