@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureStubRunner(
         stubsMode = StubRunnerProperties.StubsMode.LOCAL,
         ids = {
-                "com.kodilla:accounts:+:stubs:9000"
+                "com.kodilla.microservices:accounts:+:stubs:9000"
         }
 )
 @ExtendWith(SpringExtension.class)
